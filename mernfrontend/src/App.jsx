@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/workoutGenerator/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/workoutGenerator/blog" element={<Blog />} />
         <Route path="/workoutGenerator/about" element={<About />} />
         <Route path="/workoutGenerator/bmi" element={<BMI />} />
