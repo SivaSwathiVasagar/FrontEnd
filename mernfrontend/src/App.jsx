@@ -15,10 +15,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/workoutGenerator/blog" element={<Blog />} />
-        <Route path="/workoutGenerator/about" element={<About />} />
-        <Route path="/workoutGenerator/bmi" element={<BMI />} />
-        <Route path="/workoutGenerator/workout-log" element={<WorkoutLog />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/bmi" element={<BMI />} />
+        <Route path="/workout-log" element={<WorkoutLog />} />
       </Routes>
     </div>
   );

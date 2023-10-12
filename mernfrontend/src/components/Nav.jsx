@@ -7,16 +7,16 @@ export default function Nav() {
       <NavLink to="/">
         <div>Home</div>
       </NavLink>
-      <NavLink to="/workoutGenerator/blog">
+      <NavLink to="/blog">
         <div>Blog</div>
       </NavLink>
-      <NavLink to="/workoutGenerator/about">
+      <NavLink to="/about">
         <div>About</div>
       </NavLink>
-      <NavLink to="/workoutGenerator/bmi">
+      <NavLink to="/bmi">
         <div>BMI</div>
       </NavLink>
-      <NavLink to="/workoutGenerator/workout-log">
+      <NavLink to="/workout-log">
         <div>WorkoutLog</div>
       </NavLink>
     </div>
