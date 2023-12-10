@@ -11,7 +11,7 @@ export default function Home() {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": import.meta.env.VITE_SOME_KEY,
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         "X-RapidAPI-Host": "exerciseapi3.p.rapidapi.com",
       },
     };
