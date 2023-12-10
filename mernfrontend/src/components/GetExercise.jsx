@@ -16,20 +16,16 @@ export default function GetExercise({ exercises }) {
         advancedArray.push(Exercises);
       }
     });
-    for (let j = 0; j < 2; j++) {
-      if (beginnerArray.length > 0) {
-        allExercisesArray.push(beginnerArray[j]);
-      }
+    for (let j = 0; j < 2 && j < beginnerArray.length; j++) {
+      allExercisesArray.push(beginnerArray[j]);
     }
-    for (let j = 0; j < 2; j++) {
-      if (intermediateArray.length > 0) {
-        allExercisesArray.push(intermediateArray[j]);
-      }
+
+    for (let j = 0; j < 2 && j < intermediateArray.length; j++) {
+      allExercisesArray.push(intermediateArray[j]);
     }
-    for (let j = 0; j < 2; j++) {
-      if (advancedArray.length > 0) {
-        allExercisesArray.push(advancedArray[j]);
-      }
+
+    for (let j = 0; j < 2 && j < advancedArray.length; j++) {
+      allExercisesArray.push(advancedArray[j]);
     }
 
     return (
