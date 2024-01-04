@@ -18,7 +18,7 @@ const WorkoutLog = () => {
     event.preventDefault();
     if (selectedMuscleGroup !== "") {
       // Make a fetch request to your MongoDB server based on the selected muscle group
-      fetch(`https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}`)
+      fetch(`http://localhost:4000/${selectedMuscleGroup}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -85,6 +85,7 @@ const WorkoutLog = () => {
 
   const handleCreateWorkout = () => {
     setIsCreating(true);
+    setIsEditing(false);
     setSelectedWorkout(null); // Clear any selected workout data
     setFormData({
       name: "",
@@ -111,6 +112,7 @@ const WorkoutLog = () => {
     event.preventDefault();
 
     // Check if selectedWorkout is not null
+
     if (selectedWorkout) {
       const updatedWorkoutData = {
         name: formData.name,
@@ -121,7 +123,7 @@ const WorkoutLog = () => {
       };
 
       fetch(
-        `https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}/${selectedWorkout._id}`,
+        `http://localhost:4000/${selectedMuscleGroup}/${selectedWorkout._id}`,
         {
           method: "PUT",
           headers: {
@@ -159,12 +161,9 @@ const WorkoutLog = () => {
   };
 
   const handleDeleteWorkout = (workoutId) => {
-    fetch(
-      `https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}/${workoutId}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`http://localhost:4000/${selectedMuscleGroup}/${workoutId}`, {
+      method: "DELETE",
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -190,7 +189,7 @@ const WorkoutLog = () => {
       reps: formData.reps,
       experienceType: formData.experienceType,
     };
-    fetch(`https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}`, {
+    fetch(`http://localhost:4000/${selectedMuscleGroup}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -247,7 +246,8 @@ const WorkoutLog = () => {
       {isEditing && selectedWorkout && (
         <div>
           <h3>Edit Workout</h3>
-          <form onSubmit={isCreating ? handleCreateSubmit : handleEditSubmit}>
+          <h4>(Fetch the same muscle group to see your updated changes)</h4>
+          <form onSubmit={{ handleEditSubmit }}>
             <label>
               Name:
               <input
@@ -286,24 +286,27 @@ const WorkoutLog = () => {
             </label>
             <label>
               Experience:
-              <input
-                type="text"
+              <select
                 name="experienceType"
                 value={formData.experienceType}
                 onChange={handleInputChange}
-              />
+              >
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
             </label>
             <button className="CrudButtons" type="submit">
-              {isCreating ? "Create" : "Save"}
+              {/* {isCreating ? "Create" : "Save"} */} Save
             </button>
-            {isCreating && <button onClick={handleCancelCreate}>Cancel</button>}
+            {/* {isCreating && <button onClick={handleCancelCreate}>Cancel</button>} */}
             <button className="CrudButtons" onClick={handleCancelEdit}>
               Cancel
             </button>
           </form>
         </div>
       )}
-      {isCreating && (
+      {isCreating && !isEditing && (
         <div>
           <h3>Create New Workout</h3>
           <form onSubmit={handleCreateSubmit}>
@@ -353,12 +356,15 @@ const WorkoutLog = () => {
             </label>
             <label>
               Experience:
-              <input
-                type="text"
+              <select
                 name="experienceType"
                 value={formData.experienceType}
                 onChange={handleInputChange}
-              />
+              >
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
             </label>
             <button className="CrudButtons" type="submit">
               Create
@@ -389,6 +395,7 @@ const WorkoutLog = () => {
             <button
               className="CrudButtons"
               onClick={() => handleEditWorkoutClick(workout)}
+              disabled={isCreating}
             >
               Edit
             </button>

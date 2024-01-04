@@ -6,7 +6,9 @@ import { useState } from "react";
 
 export default function Home() {
   const [exercises, setExercise] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const getExercise = async (selectedMuscleGroup) => {
+    setIsLoading(true);
     const url = `https://exerciseapi3.p.rapidapi.com/exercise/primary_muscle/${selectedMuscleGroup}`;
     const options = {
       method: "GET",
@@ -35,7 +37,7 @@ export default function Home() {
         from below options
       </p>
       <Form exerciseSearch={getExercise} />
-      <GetExercise exercises={exercises} />
+      <GetExercise exercises={exercises} isLoading={isLoading} />
       <Footer />
     </div>
   );

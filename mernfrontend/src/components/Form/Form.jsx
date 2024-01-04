@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 export default function Form(props) {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     muscleGroup: "",
   });
@@ -9,11 +10,20 @@ export default function Form(props) {
     //use the event object to detect key and value to update
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //prevent page from refreshing on form submission
     event.preventDefault();
+    setIsLoading(true);
     const selectedMuscleGroup = formData.muscleGroup;
-    props.exerciseSearch(selectedMuscleGroup);
+    // props.exerciseSearch(selectedMuscleGroup);
+    try {
+      await props.exerciseSearch(selectedMuscleGroup);
+    } catch (error) {
+      console.error("Error during API call:", error);
+    } finally {
+      // Once the API call is completed, set isLoading back to false
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -37,7 +47,14 @@ export default function Form(props) {
           <option value="Abs">Abs</option>
         </select>
         {/* <input type="submit" value="submit"  /> */}
-        <input type="submit" value="Submit" className="SubmitButton"></input>
+        <button
+          type="submit"
+          value="Submit"
+          className="SubmitButton"
+          disabled={isLoading}
+        >
+          {isLoading ? "Fectching your Exercises..." : "Submit"}
+        </button>
       </form>
     </div>
   );

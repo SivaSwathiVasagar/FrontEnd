@@ -1,6 +1,7 @@
+// import React from "react";
 import React from "react";
 
-export default function GetExercise({ exercises }) {
+export default function GetExercise({ exercises, isLoading }) {
   const loaded = () => {
     const Exercise = [...exercises.exercises];
     let beginnerArray = [];
@@ -49,7 +50,20 @@ export default function GetExercise({ exercises }) {
     );
   };
   const loading = () => {
-    return <h2>No exercise to Display</h2>;
+    // Check if any muscle group is selected
+    const isMuscleGroupSelected = exercises && exercises.exercises.length > 0;
+
+    return (
+      <div className="GetExercise">
+        <h2>
+          {isLoading
+            ? "Exercises are loading, Please hold tight"
+            : isMuscleGroupSelected
+            ? "No exercise to display"
+            : ""}
+        </h2>
+      </div>
+    );
   };
 
   //Ternary operator will determine which functions JSX we will return

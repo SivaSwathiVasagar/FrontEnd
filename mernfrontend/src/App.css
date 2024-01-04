@@ -126,16 +126,22 @@ label {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  background: rgba(200, 135, 135, 0.82);
+  background-image:url(https://www.creativefabrica.com/wp-content/uploads/2022/03/27/Rose-gold-abstract-wallpaper-artwork-Graphics-27948488-1.jpg);
+  background-size: cover;
   width: 450px;
   box-shadow: 3px 3px 4px 0px rgba(176, 176, 176, 0.25) inset, 4px 4px 2px 0px rgba(182, 181, 181, 0.25) inset, -4px -4px 1px 0px rgba(255, 255, 255, 0.25) inset;
   transition: transform 0.2s ease-in-out;
  }
  .AllExercise:hover {
-   transform: scale(1.05); 
-   background-color: #6a040f;
-   color: white;
+   transform: scale(1.05);
+   color: #6a040f;
+   z-index: 1;
+   font-weight: lighter;
+   box-shadow: 3px 3px 4px 0px rgba(251, 171, 171, 0.25) , 4px 4px 2px 0px rgba(255, 191, 191, 0.25), -4px -4px 1px 0px rgba(252, 184, 184, 0.25) ;
  }
+ 
+
+
 .About {
   background: rgba(0, 0, 0, 0.4);
   background-size: cover;
@@ -351,7 +357,9 @@ select {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  background: rgba(210, 128, 128, 0.82);
+  /* background: rgba(210, 128, 128, 0.82); */
+  background-size: cover;
+  background-image:url(https://www.creativefabrica.com/wp-content/uploads/2022/03/27/Rose-gold-abstract-wallpaper-artwork-Graphics-27948488-1.jpg);
   width: 450px;
   box-shadow: 3px 3px 4px 0px rgba(176, 176, 176, 0.25) inset, 4px 4px 2px 0px rgba(182, 181, 181, 0.25) inset, -4px -4px 1px 0px rgba(255, 255, 255, 0.25) inset;
   transition: transform 0.2s ease-in-out;
@@ -362,6 +370,7 @@ select {
   gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
+ 
 }
 
 .WorkoutLog 
@@ -377,7 +386,8 @@ select {
 .Create:disabled {
   background-color: #645e5e; 
   cursor: not-allowed; 
-  pointer-events: none; 
+  opacity: 0.6; 
+  /* pointer-events: none;  */
 }
 
 .WorkoutLog button,
@@ -403,4 +413,9 @@ select {
   margin: 20px; /* Adjust margin values for spacing */
 }
 
+.CrudButtons[disabled] {
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  background-color: #645e5e; 
+}
 

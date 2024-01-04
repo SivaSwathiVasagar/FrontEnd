@@ -18,7 +18,7 @@ export default function Blog() {
       <p>
         Building a strong and muscular physique requires more than just lifting
         weights. Proper nutrition is a fundamental component of any successful
-        bodybuilding journey. As a beginner, understanding the key nutrients
+        body building journey. As a beginner, understanding the key nutrients
         your body needs will help you achieve your fitness goals faster and more
         effectively.
       </p>
