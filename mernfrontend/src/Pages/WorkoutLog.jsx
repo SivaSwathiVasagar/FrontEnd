@@ -18,7 +18,7 @@ const WorkoutLog = () => {
     event.preventDefault();
     if (selectedMuscleGroup !== "") {
       // Make a fetch request to your MongoDB server based on the selected muscle group
-      fetch(`http://localhost:4000/${selectedMuscleGroup}`)
+      fetch(`https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -123,7 +123,7 @@ const WorkoutLog = () => {
       };
 
       fetch(
-        `http://localhost:4000/${selectedMuscleGroup}/${selectedWorkout._id}`,
+        `https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}/${selectedWorkout._id}`,
         {
           method: "PUT",
           headers: {
@@ -161,9 +161,12 @@ const WorkoutLog = () => {
   };
 
   const handleDeleteWorkout = (workoutId) => {
-    fetch(`http://localhost:4000/${selectedMuscleGroup}/${workoutId}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}/${workoutId}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -189,7 +192,7 @@ const WorkoutLog = () => {
       reps: formData.reps,
       experienceType: formData.experienceType,
     };
-    fetch(`http://localhost:4000/${selectedMuscleGroup}`, {
+    fetch(`https://workoutgenerator-mern.onrender.com/${selectedMuscleGroup}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
