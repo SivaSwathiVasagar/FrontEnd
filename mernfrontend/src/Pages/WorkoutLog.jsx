@@ -250,7 +250,7 @@ const WorkoutLog = () => {
         <div>
           <h3>Edit Workout</h3>
           <h4>(Fetch the same muscle group to see your updated changes)</h4>
-          <form onSubmit={{ handleEditSubmit }}>
+          <form onSubmit={handleEditSubmit}>
             <label>
               Name:
               <input
